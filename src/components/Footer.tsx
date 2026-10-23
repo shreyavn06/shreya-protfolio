@@ -24,9 +24,9 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
           <p className="text-xs text-[#A0A0C0]">
             © {new Date().getFullYear()} {profile.name}. All rights reserved.
           </p>
-          <p className="text-[11px] text-[#A0A0C0]/60 mt-1">
-            Aurora Glass Portfolio • React 19 • TypeScript • Tailwind CSS • Framer Motion
-          </p>
+          {/* <p className="text-[11px] text-[#A0A0C0]/60 mt-1">
+            Aurora Glass Portfolio • React 19 • TypeScript • Tailwind CSS • Framer Motion */}
+          {/* </p> */}
         </div>
 
         <button

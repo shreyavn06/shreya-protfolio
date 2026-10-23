@@ -206,15 +206,35 @@ export const Hero: React.FC<HeroProps> = ({ profile }) => {
               <span>GITHUB</span>
             </motion.a>
 
-            {/* Education & Bio */}
+            {/* Resume Button: Opens in new tab */}
+            <motion.a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#7954F6]/50 bg-gradient-to-r from-[#7954F6]/20 to-[#087FAD]/20 text-white hover:from-[#7954F6]/30 hover:to-[#087FAD]/30 hover:shadow-[0_0_24px_rgba(121,84,246,0.4)] transition-all font-semibold tracking-wider text-xs sm:text-sm"
+            >
+              <FileText className="w-4 h-4 text-[#c084fc]" />
+              <span>RESUME</span>
+            </motion.a>
+
+            {/* About Button: Scrolls to #about */}
             <motion.a
               href="#about"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector('#about');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#087FAD]/50 bg-[#087FAD]/15 text-[#38bdf8] hover:bg-[#087FAD]/25 hover:shadow-[0_0_24px_rgba(56,189,248,0.35)] transition-all font-semibold tracking-wider text-xs sm:text-sm"
             >
               <FileText className="w-4 h-4 text-[#38bdf8]" />
-              <span>RESUME / ABOUT</span>
+              <span>ABOUT</span>
             </motion.a>
 
             {/* Contact */}

@@ -1,17 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Calendar, MapPin, Sparkles, BookOpen } from 'lucide-react';
+import { Sparkles, Trophy } from 'lucide-react';
 import { TimelineItem } from '../types';
-import { SpotlightCard } from './SpotlightCard';
 
 interface EducationProps {
   items: TimelineItem[];
 }
 
 export const Education: React.FC<EducationProps> = ({ items }) => {
+  const accentColors = [
+    { border: '#087FAD', gradient: 'from-[#087FAD] to-[#087FAD]', glow: 'rgba(8,127,173,0.3)' },
+    { border: '#7954F6', gradient: 'from-[#7954F6] to-[#7954F6]', glow: 'rgba(121,84,246,0.3)' },
+    { border: '#7954F6', gradient: 'from-[#7954F6] to-[#087FAD]', glow: 'rgba(121,84,246,0.3)' },
+  ];
+
   return (
     <section id="education" className="py-24 relative">
       <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,85 +37,119 @@ export const Education: React.FC<EducationProps> = ({ items }) => {
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Central Vertical Glowing Line for Desktop */}
-          <div className="hidden md:block absolute left-1/2 top-4 bottom-8 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#087FAD] via-[#7954F6] to-transparent opacity-40 shadow-[0_0_12px_rgba(8,127,173,0.5)]" />
+        {/* Cards Stack */}
+        <div className="space-y-6 sm:space-y-6">
+          {items.map((item, index) => {
+            const colors = accentColors[index % accentColors.length];
+            const accentColorValue = colors.border;
 
-          <div className="space-y-12 sm:space-y-16">
-            {items.map((item, index) => {
-              const isEven = index % 2 === 0;
-              return (
+            return (
+              <motion.div
+                key={item.organization + item.period}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -6 }}
+                className="relative group"
+              >
+                {/* Card Container */}
                 <div
-                  key={item.organization + item.period}
-                  className={`relative flex flex-col md:flex-row items-center ${
-                    isEven ? '' : 'md:flex-row-reverse'
-                  }`}
+                  className="relative p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md overflow-hidden transition-all duration-300"
+                  style={{
+                    borderLeft: `4px solid ${accentColorValue}`,
+                    boxShadow: `0 0 24px ${colors.glow}`,
+                  }}
                 >
-                  {/* Glowing Node */}
-                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#080817] border-2 border-[#087FAD] items-center justify-center shadow-[0_0_20px_rgba(8,127,173,0.6)] z-20">
-                    <GraduationCap className="w-4 h-4 text-[#087FAD]" />
-                  </div>
+                  {/* Accent Glow on Hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      background: `linear-gradient(135deg, ${colors.glow} 0%, transparent 50%)`,
+                    }}
+                  />
 
-                  {/* Content Container */}
-                  <div className="w-full md:w-1/2 md:px-8">
-                    <motion.div
-                      initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: '-60px' }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                    >
-                      <SpotlightCard
-                        glowColor={isEven ? 'cyan' : 'purple'}
-                        className="p-7 sm:p-8"
-                      >
-                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                          <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#087FAD]">
-                            <BookOpen className="w-4 h-4" />
-                          </div>
-                          <div className="flex items-center gap-1.5 text-xs text-[#A0A0C0]">
-                            <Calendar className="w-3.5 h-3.5 text-[#7954F6]" />
-                            <span>{item.period}</span>
-                          </div>
-                        </div>
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Top Row: Dot + Title + Score Badge */}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between gap-4 mb-3">
+                      <div className="flex items-start gap-3 flex-1">
+                        {/* Small Dot */}
+                        <div
+                          className="w-2.5 h-2.5 rounded-full mt-1.5 shrink-0"
+                          style={{ backgroundColor: accentColorValue }}
+                        />
 
-                        <h3 className="text-xl font-bold font-heading text-white mb-1">
-                          {item.title}
+                        {/* Institution Name */}
+                        <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white">
+                          {item.organization}
                         </h3>
+                      </div>
 
-                        <div className="flex flex-wrap items-center gap-2 text-sm text-[#087FAD] font-medium mb-4">
-                          <span>{item.organization}</span>
-                          <span className="text-white/20">•</span>
-                          <span className="text-[#A0A0C0] text-xs flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-[#7954F6]" />
-                            {item.location}
+                      {/* Score Badge */}
+                      {item.score && (
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/20 bg-white/[0.05] backdrop-blur-sm shrink-0"
+                          style={{
+                            boxShadow: `0 0 16px ${colors.glow}`,
+                          }}
+                        >
+                          <Trophy className="w-4 h-4 text-[#FACC15]" />
+                          <span className="text-lg font-bold text-white">{item.score}</span>
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* Course/Board */}
+                    <div className="mb-2 ml-5.5">
+                      <p
+                        className="text-lg sm:text-xl font-semibold"
+                        style={{ color: accentColorValue }}
+                      >
+                        {item.title}
+                      </p>
+                    </div>
+
+                    {/* Date Range with Dot */}
+                    <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-[#A0A0C0] mb-4 ml-5.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#A0A0C0]" />
+                      <span>{item.period}</span>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="h-[1px] bg-white/[0.08] mb-4" />
+
+                    {/* Description */}
+                    <div className="space-y-2 mb-6">
+                      {item.description.map((desc, dIdx) => (
+                        <p
+                          key={dIdx}
+                          className="text-sm text-white/70 leading-relaxed"
+                        >
+                          {desc}
+                        </p>
+                      ))}
+                    </div>
+
+                    {/* Tags */}
+                    {item.tags && item.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {item.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[11px] font-medium px-3 py-1.5 rounded-lg bg-white/[0.05] text-[#A0A0C0] border border-white/[0.1]"
+                          >
+                            {tag}
                           </span>
-                        </div>
-
-                        <div className="space-y-2 mb-6">
-                          {item.description.map((desc, dIdx) => (
-                            <p key={dIdx} className="text-xs sm:text-sm text-[#A0A0C0] leading-relaxed">
-                              {desc}
-                            </p>
-                          ))}
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 pt-3 border-t border-white/5">
-                          {item.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[11px] font-medium px-2.5 py-1 rounded-xl bg-white/[0.04] text-[#A0A0C0] border border-white/5"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </SpotlightCard>
-                    </motion.div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

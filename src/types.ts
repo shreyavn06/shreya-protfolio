@@ -15,8 +15,9 @@ export interface TimelineItem {
   period: string;
   location: string;
   description: string[];
-  tags: string[];
+  tags?: string[];
   type?: string;
+  score?: string;
 }
 
 export interface Project {

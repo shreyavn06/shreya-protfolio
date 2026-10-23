@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Briefcase, User, Box, Award, SlidersHorizontal, Sparkles } from 'lucide-react';
+import { Menu, X, BookOpen, Briefcase, User, Box, Award, Sparkles } from 'lucide-react';
 import { PROFILE } from '../constants';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 
-interface NavbarProps {
-  customName?: string;
-  onOpenCustomize?: () => void;
-}
+interface NavbarProps {}
 
 const navItems = [
   { label: 'HOME', href: '#home', prefix: '>_' },
@@ -19,7 +16,7 @@ const navItems = [
   { label: 'AWARDS', href: '#awards', icon: Award },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ customName, onOpenCustomize }) => {
+export const Navbar: React.FC<NavbarProps> = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const sectionIds = ['home', 'about', 'experience', 'projects', 'skills', 'education', 'awards', 'contact'];
   const activeId = useScrollSpy(sectionIds, 140);
@@ -33,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ customName, onOpenCustomize }) =
     }
   };
 
-  const displayName = customName || PROFILE.name;
+  const displayName = PROFILE.name;
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-3 pointer-events-none">
@@ -75,16 +72,6 @@ export const Navbar: React.FC<NavbarProps> = ({ customName, onOpenCustomize }) =
 
         {/* Right Status Indicator: Violet / Cyan Aurora */}
         <div className="flex items-center gap-3">
-          {onOpenCustomize && (
-            <button
-              onClick={onOpenCustomize}
-              title="Customize Portfolio"
-              className="hidden sm:inline-flex p-1.5 rounded-lg border border-white/10 text-[#A0A0C0] hover:text-white hover:bg-white/5 transition-colors"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-            </button>
-          )}
-
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#c084fc] px-2.5 py-1 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#a855f7] opacity-75" />

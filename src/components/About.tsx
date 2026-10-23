@@ -77,7 +77,7 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
 
               <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <div>
-                  <span className="block text-2xl sm:text-3xl font-heading font-bold text-white">9.10</span>
+                  <span className="block text-2xl sm:text-3xl font-heading font-bold text-white">9.1</span>
                   <span className="text-xs text-[#A0A0C0] mt-0.5 block">CGPA (B.E. ISE)</span>
                 </div>
                 <div>

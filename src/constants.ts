@@ -6,11 +6,11 @@ export const PROFILE: ProfileData = {
     "Backend Engineer & Spring Boot Developer",
     "AI & Cloud-Native Solutions Builder",
     "Information Science Undergrad @ JSSATE",
-    "Full-Stack Developer (React & FastAPI)"
+    "Full-Stack Developer "
   ],
   headline: "Information Science and Engineering undergraduate building scalable Spring Boot architectures, multimodal AI platforms, and cloud-native systems.",
   bioParagraphs: [
-    "I am an Information Science and Engineering undergraduate at JSS Academy of Technical Education, Bengaluru (CGPA: 9.1 / 10). Hands-on experience through backend engineering industry internships and AI-powered systems development.",
+    "I am an Information Science and Engineering undergraduate at JSS Academy of Technical Education, Bengaluru (CGPA: 9.1/ 10). Hands-on experience through backend engineering industry internships and AI-powered systems development.",
     "Experienced in architecting RESTful microservices with Spring Boot, migrating APIs from Node.js, integrating Computer Vision & Groq LLM pipelines, and automating secure AWS cloud deployments with S3 and Secrets Manager."
   ],
   email: "shreyasetty06@gmail.com",
@@ -19,8 +19,8 @@ export const PROFILE: ProfileData = {
   availability: "Open to Backend & Software Engineering Roles",
   avatarUrl: "",
   socials: [
-    { label: "GitHub", url: "https://github.com/shreyasetty", icon: "github" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/shreyasetty", icon: "linkedin" },
+    { label: "GitHub", url: "https://github.com/shreyavn06", icon: "github" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/shreya-setty-vn-8299a3369/", icon: "linkedin" },
     { label: "Email", url: "mailto:shreyasetty06@gmail.com", icon: "mail" }
   ],
   formspreeEndpoint: "https://formspree.io/f/mqkvgzqo"
@@ -73,18 +73,18 @@ export const EXPERIENCE_ITEMS: TimelineItem[] = [
     ],
     tags: ["Leadership", "Team Management", "Event Strategy", "Public Speaking"]
   },
-  {
-    title: "Delegate – DSI MUN 3.0",
-    organization: "UNHRC",
-    period: "2024",
-    location: "Bengaluru, India",
-    type: "Leadership",
-    description: [
-      "Collaborated with international delegates to conduct rigorous policy research and draft resolutions.",
-      "Participated in structured diplomatic debates representing policy frameworks on global human rights issues."
-    ],
-    tags: ["Policy Research", "Diplomacy", "Resolution Drafting"]
-  },
+  // {
+  //   title: "Delegate – DSI MUN 3.0",
+  //   organization: "UNHRC",
+  //   period: "2024",
+  //   location: "Bengaluru, India",
+  //   type: "Leadership",
+  //   description: [
+  //     "Collaborated with international delegates to conduct rigorous policy research and draft resolutions.",
+  //     "Participated in structured diplomatic debates representing policy frameworks on global human rights issues."
+  //   ],
+  //   tags: ["Policy Research", "Diplomacy", "Resolution Drafting"]
+  // },
   {
     title: "Placement Coordinator & Volunteer",
     organization: "JSS Academy of Technical Education",
@@ -103,14 +103,36 @@ export const EDUCATION_ITEMS: TimelineItem[] = [
   {
     title: "Bachelor of Engineering in Information Science and Engineering",
     organization: "JSS Academy of Technical Education",
-    period: "2023 — Present",
+    period: "08/2023 – Present",
     location: "Bengaluru, India",
     description: [
-      "Academic Performance: CGPA 9.1 / 10 (Pursuing).",
+      "Academic Performance: CGPA 9.04 / 10 (Pursuing).",
       "Specialized in backend architectures, cloud computing, and AI-driven systems engineering.",
       "Core Coursework: Object-Oriented Programming (OOP), Data Structures & Algorithms, Database Management Systems (DBMS), Operating Systems, Computer Networks."
     ],
-    tags: ["Information Science", "CGPA 9.1", "Data Structures", "OOP", "DBMS", "Computer Networks"]
+    tags: ["Information Science", "CGPA 9.1", "Data Structures", "OOP", "DBMS", "Computer Networks"],
+    score: "9.1"
+  },
+  {
+    title: "Karnataka Pre-University Board (PCMB)",
+    organization: "GR Pre University",
+    period: "06/2021 – 05/2023",
+    location: "Bengaluru, India",
+    description: [
+      "Completed pre-university education with distinction in PCMB (Physics, Chemistry, Mathematics, Biology) stream.",
+      "Strong foundation in core sciences and mathematics, achieving academic excellence."
+    ],
+    score: "92.67%"
+  },
+  {
+    title: "ICSE",
+    organization: "Sudarshan Vidya Mandir",
+    period: "05/2009 – 05/2021",
+    location: "Bengaluru, India",
+    description: [
+      "Completed secondary education with proficiency in English, Mathematics, Science, and other core subjects.",
+    ],
+    score: "95%"
   }
 ];
 
@@ -180,13 +202,7 @@ export const AWARDS: Award[] = [
     detail: "Foundational credential covering LLMs, transformer architectures, prompt engineering, and GenAI applications.",
     type: "Certification"
   },
-  {
-    title: "Delegate – DSI MUN 3.0 (UNHRC)",
-    issuer: "United Nations Human Rights Council Simulation",
-    year: "2024",
-    detail: "Recognized for international policy research, resolution drafting, and structured diplomatic debate.",
-    type: "Award"
-  }
+ 
 ];
 
 export const NAV_LINKS: NavLink[] = [
